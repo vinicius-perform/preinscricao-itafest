@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pré-Inscrição | ItaFest OffRoad</title>
+  <meta name="description" content="Formulário oficial de pré-inscrição para o ItaFest OffRoad." />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-BgnJmjhg.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-E0sKlGFh.css">
+</head>
+<body class="clean-theme">
+  <div id="app">
+
+    <!-- Minimal Header / Brand Logo -->
+    <header class="simple-header">
+      <div class="container text-center">
+        <h1 class="logo-title">ItaFest <span class="accent-text">OffRoad</span></h1>
+      </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="container clean-layout">
+      <!-- Left Column: Clean Form -->
+      <section class="form-wrapper">
+
+        <!-- Welcome Banner -->
+        <div class="clean-card greeting-card">
+          <div class="card-body">
+            <h2 class="form-title"># PRÉ-INSCRIÇÃO</h2>
+            <p class="greeting-text">
+              Olá! Tudo bem? 👋<br>
+              Para realizar sua <strong>pré-inscrição</strong> no evento, preciso confirmar algumas informações:
+            </p>
+          </div>
+        </div>
+
+        <form id="preInscricaoForm" novalidate>
+
+          <!-- SEÇÃO 1: Dados do Participante -->
+          <div class="clean-card">
+            <div class="card-header">
+              <div class="icon-circle"><i data-lucide="user"></i></div>
+              <div>
+                <h2>👤 Dados do participante</h2>
+                <p>Informações de contato do piloto / responsável</p>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="form-group">
+                <label for="nome">Nome completo <span class="req">*</span></label>
+                <input type="text" id="nome" name="nome" class="clean-input" placeholder="Digite seu nome completo" required />
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="cidadeUf">Cidade/UF <span class="req">*</span></label>
+                  <input type="text" id="cidadeUf" name="cidadeUf" class="clean-input" placeholder="Ex: Itapipoca / CE" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="telefone">Telefone / WhatsApp <span class="req">*</span></label>
+                  <input type="tel" id="telefone" name="telefone" class="clean-input" placeholder="(88) 99999-9999" required />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO 2: Dados do Veículo -->
+          <div class="clean-card">
+            <div class="card-header">
+              <div class="icon-circle"><i data-lucide="truck"></i></div>
+              <div>
+                <h2>🚗 Dados do veículo</h2>
+                <p>Especificações do seu veículo</p>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <!-- 1. Marca -->
+              <div class="form-group">
+                <label for="marca">1️⃣ Marca <span class="req">*</span></label>
+                <div class="quick-chips">
+                  <button type="button" class="chip-btn" data-brand="Troller">Troller</button>
+                  <button type="button" class="chip-btn" data-brand="Jeep">Jeep</button>
+                  <button type="button" class="chip-btn" data-brand="Toyota">Toyota</button>
+                  <button type="button" class="chip-btn" data-brand="Ford">Ford</button>
+                  <button type="button" class="chip-btn" data-brand="Mitsubishi">Mitsubishi</button>
+                  <button type="button" class="chip-btn" data-brand="Chevrolet">Chevrolet</button>
+                  <button type="button" class="chip-btn" data-brand="Suzuki">Suzuki</button>
+                  <button type="button" class="chip-btn" data-brand="RAM">RAM</button>
+                  <button type="button" class="chip-btn" data-brand="Can-Am">Can-Am (UTV)</button>
+                </div>
+                <input type="text" id="marca" name="marca" class="clean-input" placeholder="Outra marca ou confirme a selecionada" required />
+              </div>
+
+              <div class="form-grid-3">
+                <!-- 2. Modelo -->
+                <div class="form-group">
+                  <label for="modelo">2️⃣ Modelo <span class="req">*</span></label>
+                  <input type="text" id="modelo" name="modelo" class="clean-input" placeholder="Ex: T4, Wrangler, Hilux, Jimny" required />
+                </div>
+
+                <!-- 3. Ano -->
+                <div class="form-group">
+                  <label for="ano">3️⃣ Ano de fabricação <span class="req">*</span></label>
+                  <input type="number" id="ano" name="ano" min="1950" max="2027" class="clean-input" placeholder="Ex: 2021" required />
+                </div>
+
+                <!-- 4. Motorização -->
+                <div class="form-group">
+                  <label for="motorizacao">4️⃣ Motorização <span class="req">*</span></label>
+                  <input type="text" id="motorizacao" name="motorizacao" class="clean-input" placeholder="Ex: 3.2 TGV, 2.8 Diesel, 2.0 Turbo" required />
+                </div>
+              </div>
+
+              <!-- 5. Combustível -->
+              <div class="form-group">
+                <label>5️⃣ Combustível <span class="req">*</span></label>
+                <div class="clean-radio-grid">
+                  <label class="clean-pill-option">
+                    <input type="radio" name="combustivel" value="Gasolina" required />
+                    <span class="pill-box"><i data-lucide="fuel"></i> Gasolina</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="combustivel" value="Etanol" />
+                    <span class="pill-box"><i data-lucide="flame"></i> Etanol</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="combustivel" value="Flex" />
+                    <span class="pill-box"><i data-lucide="refresh-cw"></i> Flex</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="combustivel" value="Diesel" />
+                    <span class="pill-box"><i data-lucide="droplet"></i> Diesel</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="combustivel" value="Elétrico" />
+                    <span class="pill-box"><i data-lucide="zap"></i> Elétrico</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="combustivel" value="Híbrido" />
+                    <span class="pill-box"><i data-lucide="cpu"></i> Híbrido</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 6. Câmbio -->
+              <div class="form-group">
+                <label>6️⃣ Câmbio <span class="req">*</span></label>
+                <div class="clean-radio-grid-3">
+                  <label class="clean-pill-option">
+                    <input type="radio" name="cambio" value="Manual" required />
+                    <span class="pill-box">Manual</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="cambio" value="Automático" />
+                    <span class="pill-box">Automático</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="cambio" value="Automatizado" />
+                    <span class="pill-box">Automatizado</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 7. O veículo está -->
+              <div class="form-group">
+                <label>7️⃣ O veículo está: <span class="req">*</span></label>
+                <div class="clean-radio-grid-2">
+                  <label class="clean-pill-option">
+                    <input type="radio" name="estadoVeiculo" value="100% original de fábrica" required />
+                    <span class="pill-box"><i data-lucide="check-circle-2"></i> 100% original de fábrica</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="estadoVeiculo" value="Possui modificações" />
+                    <span class="pill-box"><i data-lucide="settings"></i> Possui modificações</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 8. Caso possua modificações, informe quais -->
+              <div class="form-group mod-container hidden" id="modificacoesWrapper">
+                <label>8️⃣ Caso possua modificações, informe quais:</label>
+                <div class="clean-checkbox-grid">
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Motor" />
+                    <span class="check-box">Motor</span>
+                  </label>
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Turbo/Supercharger" />
+                    <span class="check-box">Turbo/Supercharger</span>
+                  </label>
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Remapeamento (Remap)" />
+                    <span class="check-box">Remapeamento (Remap)</span>
+                  </label>
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Escape" />
+                    <span class="check-box">Escape</span>
+                  </label>
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Suspensão" />
+                    <span class="check-box">Suspensão / Lift</span>
+                  </label>
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Rodas/Pneus" />
+                    <span class="check-box">Rodas/Pneus Off-Road</span>
+                  </label>
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Freios" />
+                    <span class="check-box">Freios</span>
+                  </label>
+                  <label class="clean-check-option">
+                    <input type="checkbox" name="modificacoes" value="Estética" />
+                    <span class="check-box">Estética / Parachoques</span>
+                  </label>
+                </div>
+                <div class="margin-top-sm">
+                  <label for="outrasModificacoes">Outras modificações:</label>
+                  <input type="text" id="outrasModificacoes" name="outrasModificacoes" class="clean-input" placeholder="Guincho, Snorkel, Bloqueio de Diferencial, etc." />
+                </div>
+              </div>
+
+              <!-- 9. Preparação / Dinamômetro -->
+              <div class="form-group">
+                <label>9️⃣ O veículo possui preparação de potência ou já foi aferido em dinamômetro? <span class="req">*</span></label>
+                <div class="clean-radio-grid-2">
+                  <label class="clean-pill-option">
+                    <input type="radio" name="dinamometro" value="Sim" required />
+                    <span class="pill-box">Sim</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="dinamometro" value="Não" />
+                    <span class="pill-box">Não</span>
+                  </label>
+                </div>
+                <div class="margin-top-sm hidden" id="potenciaWrapper">
+                  <input type="text" id="potenciaDetalhe" name="potenciaDetalhe" class="clean-input" placeholder="Informe a potência aferida (Ex: 240 cv de roda)" />
+                </div>
+              </div>
+
+              <!-- 10. Equipamentos de segurança -->
+              <div class="form-group">
+                <label>🔟 O veículo mantém todos os equipamentos de segurança obrigatórios? <span class="req">*</span></label>
+                <div class="clean-radio-grid-2">
+                  <label class="clean-pill-option">
+                    <input type="radio" name="seguranca" value="Sim" required />
+                    <span class="pill-box">Sim</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="seguranca" value="Não" />
+                    <span class="pill-box">Não</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 11. Categoria específica -->
+              <div class="form-group">
+                <label for="categoria">1️⃣1️⃣ Deseja participar em alguma categoria específica? (Se houver)</label>
+                <div class="quick-chips">
+                  <button type="button" class="cat-chip" data-cat="Trilha Off-Road">Trilha Off-Road</button>
+                  <button type="button" class="cat-chip" data-cat="Desafio 4x4">Desafio 4x4</button>
+                  <button type="button" class="cat-chip" data-cat="UTV / Quadriciclo">UTV / Quadriciclo</button>
+                  <button type="button" class="cat-chip" data-cat="Exposição">Exposição</button>
+                </div>
+                <input type="text" id="categoria" name="categoria" class="clean-input" placeholder="Ex: Trilha Radicais ou Passeio Família" />
+              </div>
+
+            </div>
+          </div>
+
+          <!-- SINGLE MAIN SUBMIT BUTTON -->
+          <div class="clean-card form-actions-card single-button-card">
+            <button type="submit" id="btnSubmit" class="clean-btn btn-orange btn-full btn-lg">
+              <i data-lucide="send"></i> Finalizar Pré-Inscrição
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Right Column: Summary Card -->
+      <aside class="summary-wrapper">
+        <div class="sticky-box">
+          <div class="summary-card">
+            <div class="summary-header">
+              <div class="summary-badge">RESUMO DA INSCRIÇÃO</div>
+              <h3 id="sumCarTitle">Veículo não informado</h3>
+              <p id="sumCarSub">Marca • Modelo • Ano</p>
+            </div>
+            
+            <div class="summary-body">
+              <div class="sum-item">
+                <span>Participante:</span>
+                <strong id="sumPilot">Aguardando...</strong>
+              </div>
+              <div class="sum-item">
+                <span>Cidade/UF:</span>
+                <strong id="sumCity">Aguardando...</strong>
+              </div>
+              <div class="sum-item">
+                <span>Telefone:</span>
+                <strong id="sumPhone">-</strong>
+              </div>
+              <div class="sum-item">
+                <span>Combustível / Câmbio:</span>
+                <strong id="sumSpecs">-</strong>
+              </div>
+              <div class="sum-item">
+                <span>Estado:</span>
+                <strong id="sumState">-</strong>
+              </div>
+
+              <div class="sum-divider"></div>
+
+              <div class="sum-item">
+                <span>Categoria:</span>
+                <span class="cat-badge-clean" id="sumCategory">Geral</span>
+              </div>
+
+              <div class="sum-footer">
+                <div class="qr-box">
+                  <i data-lucide="sheet"></i>
+                </div>
+                <div class="code-info">
+                  <span class="code-title">ENVIO PARA PLANILHA</span>
+                  <span class="code-number">Google Sheets Conectado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-tools-card">
+            <button type="button" id="btnReset" class="tool-btn danger">
+              <i data-lucide="rotate-ccw"></i> Limpar Formulário
+            </button>
+          </div>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-clean hidden">
+      <i data-lucide="check-circle" id="toastIcon"></i>
+      <span id="toastMsg">Mensagem enviada com sucesso!</span>
+    </div>
+
+    <!-- Modal Success / Confirmation -->
+    <div id="outputModal" class="modal-overlay hidden">
+      <div class="modal-clean-box">
+        <div class="modal-clean-header text-center">
+          <div class="success-icon-badge">
+            <i data-lucide="check-circle-2"></i>
+          </div>
+          <h3>Pré-Inscrição Enviada!</h3>
+          <button type="button" class="btn-close-clean" id="btnCloseModal">&times;</button>
+        </div>
+        <div class="modal-clean-body">
+          <p class="text-center font-lg">
+            Os dados da sua pré-inscrição foram registrados com sucesso na planilha oficial do <strong>ItaFest OffRoad</strong>! 🎉
+          </p>
+          <div class="submission-summary-box margin-top-md">
+            <h4>Resumo dos Dados Registrados:</h4>
+            <pre id="modalTextContent" class="clean-markdown-box"></pre>
+          </div>
+        </div>
+        <div class="modal-clean-footer text-center justify-center">
+          <button type="button" class="clean-btn btn-orange" id="btnModalCloseDone">
+            <i data-lucide="check"></i> Concluído
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="clean-footer">
+      <div class="container">
+        <p>© 2026 ItaFest OffRoad • Todos os direitos reservados</p>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
