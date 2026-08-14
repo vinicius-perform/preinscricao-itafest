@@ -92,7 +92,7 @@
                   <button type="button" class="chip-btn" data-brand="Chevrolet">Chevrolet</button>
                   <button type="button" class="chip-btn" data-brand="Suzuki">Suzuki</button>
                   <button type="button" class="chip-btn" data-brand="RAM">RAM</button>
-                  <button type="button" class="chip-btn" data-brand="Can-Am">Can-Am (UTV)</button>
+                  <button type="button" class="chip-btn" data-brand="UTV">UTV</button>
                 </div>
                 <input type="text" id="marca" name="marca" class="clean-input" placeholder="Outra marca ou confirme a selecionada" required />
               </div>
@@ -258,18 +258,38 @@
                 </div>
               </div>
 
-              <!-- 11. Categoria específica -->
-              <div class="form-group">
-                <label for="categoria">1️⃣1️⃣ Deseja participar em alguma categoria específica? (Se houver)</label>
-                <div class="quick-chips">
-                  <button type="button" class="cat-chip" data-cat="Trilha Off-Road">Trilha Off-Road</button>
-                  <button type="button" class="cat-chip" data-cat="Desafio 4x4">Desafio 4x4</button>
-                  <button type="button" class="cat-chip" data-cat="UTV / Quadriciclo">UTV / Quadriciclo</button>
-                  <button type="button" class="cat-chip" data-cat="Exposição">Exposição</button>
-                </div>
-                <input type="text" id="categoria" name="categoria" class="clean-input" placeholder="Ex: Trilha Radicais ou Passeio Família" />
-              </div>
 
+            </div>
+          </div>
+
+          <!-- SEÇÃO 3: Modalidade de Participação -->
+          <div class="clean-card">
+            <div class="card-header">
+              <div class="icon-circle"><i data-lucide="trophy"></i></div>
+              <div>
+                <h2>🏁 Modalidade de participação</h2>
+                <p>Escolha a modalidade em que deseja participar</p>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="form-group">
+                <label>Deseja participar em qual modalidade? <span class="req">*</span></label>
+                <div class="clean-radio-grid-3">
+                  <label class="clean-pill-option">
+                    <input type="radio" name="modalidade" value="Indoor" required />
+                    <span class="pill-box"><i data-lucide="check-circle"></i> Indoor</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="modalidade" value="Arrancadão" />
+                    <span class="pill-box"><i data-lucide="check-circle"></i> Arrancadão</span>
+                  </label>
+                  <label class="clean-pill-option">
+                    <input type="radio" name="modalidade" value="Indoor + Arrancadão" />
+                    <span class="pill-box"><i data-lucide="check-circle"></i> Indoor + Arrancadão</span>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -314,13 +334,11 @@
                 <span>Estado:</span>
                 <strong id="sumState">-</strong>
               </div>
-
-              <div class="sum-divider"></div>
-
               <div class="sum-item">
-                <span>Categoria:</span>
-                <span class="cat-badge-clean" id="sumCategory">Geral</span>
+                <span>Modalidade:</span>
+                <strong id="sumModalidade">Aguardando...</strong>
               </div>
+
 
               <div class="sum-footer">
                 <div class="qr-box">
@@ -361,6 +379,21 @@
           <button type="button" class="btn-close-clean" id="btnCloseModal">&times;</button>
         </div>
         <div class="modal-clean-body">
+
+          <!-- WhatsApp Auto-Redirect & Confirmation Banner -->
+          <div class="whatsapp-redirect-card">
+            <div class="whatsapp-badge">
+              <i data-lucide="message-square"></i>
+            </div>
+            <div class="redirect-info">
+              <h4>Confirme sua inscrição no WhatsApp!</h4>
+              <p>Redirecionando para confirmar sua inscrição em <strong id="redirectCountdown" class="countdown-pulse">3</strong> segundos...</p>
+            </div>
+            <a href="https://wa.link/08j78d" id="btnDirectWhatsapp" class="whatsapp-btn">
+              <i data-lucide="external-link"></i> Confirmar Inscrição no WhatsApp
+            </a>
+          </div>
+
           <p class="text-center font-lg">
             Os dados da sua pré-inscrição foram registrados com sucesso na planilha oficial do <strong>ItaFest OffRoad</strong>! 🎉
           </p>

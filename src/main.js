@@ -18,12 +18,14 @@ let state = {
   dinamometro: '',
   potenciaDetalhe: '',
   seguranca: '',
-  categoria: ''
+  modalidade: ''
 };
 
 // Storage key and default Google Sheets Webhook URL provided by user
 const STORAGE_WEBHOOK_KEY = 'itafest_sheets_webhook_url';
-const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyeFyMsXW62rRKcWc1fuDvypDeoCpk7z4TO7XMKqBFEqYppV7M2PA0_iPuUcjM7L1j7/exec';
+const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw-wP_94u6X5cBSx0rYYN2ZEFI1gVTBGhj2PDsGdIh3IkwqZ29HxgyaPFsrOxP9sl4l/exec';
+const WHATSAPP_REDIRECT_URL = 'https://wa.link/08j78d';
+let redirectTimer = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   createIcons({ icons });
@@ -88,18 +90,6 @@ function initFormListeners() {
     });
   });
 
-  // Quick Category Chips
-  document.querySelectorAll('.cat-chip').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.cat-chip').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      const catInput = document.getElementById('categoria');
-      catInput.value = btn.dataset.cat;
-      syncStateFromDOM();
-      updateLiveSummary();
-    });
-  });
-
   // Real-time input listener
   form.addEventListener('input', () => {
     syncStateFromDOM();
@@ -133,21 +123,34 @@ function initFormListeners() {
     }
   });
 
-  // Modal Done Button
-  document.getElementById('btnModalCloseDone').addEventListener('click', () => {
+  // Modal Done & Close Buttons
+  const closeModal = () => {
+    if (redirectTimer) {
+      clearInterval(redirectTimer);
+      redirectTimer = null;
+    }
     document.getElementById('outputModal').classList.add('hidden');
-  });
+  };
 
-  document.getElementById('btnCloseModal').addEventListener('click', () => {
-    document.getElementById('outputModal').classList.add('hidden');
-  });
+  document.getElementById('btnModalCloseDone').addEventListener('click', closeModal);
+  document.getElementById('btnCloseModal').addEventListener('click', closeModal);
+
+  const directWhatsappBtn = document.getElementById('btnDirectWhatsapp');
+  if (directWhatsappBtn) {
+    directWhatsappBtn.addEventListener('click', () => {
+      if (redirectTimer) {
+        clearInterval(redirectTimer);
+        redirectTimer = null;
+      }
+    });
+  }
 
   // Reset Button
   document.getElementById('btnReset').addEventListener('click', () => {
     form.reset();
     document.getElementById('modificacoesWrapper').classList.add('hidden');
     document.getElementById('potenciaWrapper').classList.add('hidden');
-    document.querySelectorAll('.chip-btn, .cat-chip').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('selected'));
     syncStateFromDOM();
     updateLiveSummary();
     showToast('Formulário limpo', 'info');
@@ -206,7 +209,7 @@ function syncStateFromDOM() {
   state.dinamometro = formData.get('dinamometro') || '';
   state.potenciaDetalhe = formData.get('potenciaDetalhe') || '';
   state.seguranca = formData.get('seguranca') || '';
-  state.categoria = formData.get('categoria') || '';
+  state.modalidade = formData.get('modalidade') || '';
 }
 
 function updateLiveSummary() {
@@ -223,9 +226,7 @@ function updateLiveSummary() {
   const specs = `${state.combustivel || '-'} / ${state.cambio || '-'}`;
   document.getElementById('sumSpecs').textContent = specs;
   document.getElementById('sumState').textContent = state.estadoVeiculo || '-';
-  document.getElementById('sumCategory').textContent = state.categoria || 'Geral Off-Road';
-
-  document.getElementById('sumStatus').textContent = 'Planilha Conectada ✅';
+  document.getElementById('sumModalidade').textContent = state.modalidade || 'Aguardando...';
 }
 
 function validateForm() {
@@ -268,8 +269,28 @@ function triggerSuccessSubmission() {
   const formattedText = generateFormattedMarkdown();
   document.getElementById('modalTextContent').textContent = formattedText;
   document.getElementById('outputModal').classList.remove('hidden');
+  createIcons({ icons });
 
-  showToast('Inscrição enviada para a planilha com sucesso! 📊', 'success');
+  showToast('Pré-Inscrição enviada com sucesso! 📊', 'success');
+
+  // Initiate 3, 2, 1 Countdown and Automatic Redirect to WhatsApp
+  if (redirectTimer) clearInterval(redirectTimer);
+  let countdown = 3;
+  const countdownEl = document.getElementById('redirectCountdown');
+  if (countdownEl) countdownEl.textContent = countdown;
+
+  redirectTimer = setInterval(() => {
+    countdown--;
+    if (countdownEl) {
+      countdownEl.textContent = countdown > 0 ? countdown : '0';
+    }
+
+    if (countdown <= 0) {
+      clearInterval(redirectTimer);
+      redirectTimer = null;
+      window.location.href = WHATSAPP_REDIRECT_URL;
+    }
+  }, 1000);
 }
 
 function generateFormattedMarkdown() {
@@ -305,6 +326,9 @@ function generateFormattedMarkdown() {
 
   const segSim = state.seguranca === 'Sim' ? 'X' : ' ';
   const segNao = state.seguranca === 'Não' ? 'X' : ' ';
+
+  const modalidadeOpts = ['Indoor', 'Arrancadão', 'Indoor + Arrancadão'];
+  const modalidadeStr = modalidadeOpts.map(opt => `* (${state.modalidade === opt ? 'X' : ' '}) ${opt}`).join('\n');
 
   return `# **PRÉ-INSCRIÇÃO**
 
@@ -356,8 +380,11 @@ ${outrasStr}
 * (${segSim}) Sim
 * (${segNao}) Não
 
-1️⃣1️⃣ Deseja participar em alguma categoria específica? (Se houver)
-${state.categoria || 'Não especificada'}
+## 🏁 Modalidade de Participação
+
+Deseja participar em qual modalidade?
+
+${modalidadeStr}
 `;
 }
 
